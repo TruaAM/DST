@@ -6,7 +6,7 @@ namespace Data.Context
 {
     public class DBContext : DbContext
     {
-        public DbSet<Example> Examples { get; set; }
+        public DbSet<MainInfo> MainInfos { get; set; }
 
         private readonly string computerName = Environment.MachineName;
         private readonly string databaseName = "DatabaseName";
