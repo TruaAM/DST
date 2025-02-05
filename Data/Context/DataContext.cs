@@ -9,11 +9,18 @@ namespace Data.Context
     {
         public DbSet<MainInfo> MainInfos => Set<MainInfo>();
         public DbSet<User> User => Set<User>();
-
-
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+            Database.EnsureCreated();
         }
+       
+        
+        public DataContext() { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=quotes.db");
+        }
+
     }
 }

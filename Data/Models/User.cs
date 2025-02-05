@@ -8,7 +8,7 @@ namespace Data.Models
 {
     public class User
     {
-        public Guid UserId { get; set; }
+        public uint UserId { get; set; }
 
         public string Ip { get; set; }
     }
