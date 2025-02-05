@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Data.Models
 {
     public class MainInfo
     {
-        public Guid Id { get; set; }
+        public IEnumerable<User> users { get; set; }
+        [Key]
+        public uint QuoteId { get; set; }
 
         public string Quote { get; set; }
 
