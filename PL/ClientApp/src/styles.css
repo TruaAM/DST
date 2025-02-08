@@ -1,16 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  overflow: hidden;
 }
 
-code {
-  color: #e01a76;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+html {
+  font-size: 700.5%;
+  color: white;
+  top: 70%;
+  left: 50%;
+  text-align: center;
 }
