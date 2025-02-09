@@ -7,11 +7,17 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { GreetingComponent } from './components/greeting/greeting.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { SocialButtonsComponent } from './components/social-buttons/social-buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    GreetingComponent,
+    QuoteComponent,
+    SocialButtonsComponent
    
   ],
   imports: [
