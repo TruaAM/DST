@@ -3,45 +3,45 @@ using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins("https://localhost:44483", "https://localhost:7216")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
 
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
-/* using (DataContext db = new DataContext()) // Not work
-{
-    
-    var infos = db.MainInfos.ToList();
-    Console.WriteLine("тестові об'єкти:");
-    foreach (MainInfo u in infos)
-    {
-        Console.WriteLine($"{u.Quote}.{u.Author}");
-    }
-} */
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseRouting();
+
+
+app.UseCors("AllowSpecificOrigins");
+
+app.UseAuthorization();
 
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html"); ;
 
 app.Run();
-
-
