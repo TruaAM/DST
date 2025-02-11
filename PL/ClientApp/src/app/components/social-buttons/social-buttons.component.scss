@@ -1,0 +1,18 @@
+.social-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.social-buttons img {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-buttons img:hover {
+  transform: scale(1.2);
+}
